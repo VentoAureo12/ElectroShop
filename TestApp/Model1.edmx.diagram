@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e11f0f31d3b64354af3794cee3b4f62f" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="ElectroShopBDModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Вид_товара" Width="1.5" PointX="4.875" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Данные_пользователя" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Заказ" Width="1.5" PointX="8.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Заказ_Товар" Width="1.5" PointX="10.375" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Пользователь" Width="1.5" PointX="3.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Пункт_Выдачи" Width="1.5" PointX="7" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Роль_пользователя" Width="1.5" PointX="2.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Статус_заказа" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectroShopBDModel.Товар" Width="1.5" PointX="8" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Товар_Вид_товара" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Данные_пользователя_Пользователь" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Заказ_Пользователь" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Заказ_Пункт_Выдачи" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Заказ_Статус_заказа" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Заказ_Товар_Заказ" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Заказ_Товар_Товар" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectroShopBDModel.FK_Пользователь_Роль_пользователя" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

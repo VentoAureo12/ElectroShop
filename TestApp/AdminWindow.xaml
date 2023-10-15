@@ -1,0 +1,100 @@
+﻿<Window x:Class="TestApp.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:commands="clr-namespace:TestApp.Commands"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestApp"
+        mc:Ignorable="d"
+        Title="Меню администратора" Height="700" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="4*"></ColumnDefinition>
+        <ColumnDefinition></ColumnDefinition>
+        <ColumnDefinition></ColumnDefinition>
+        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="20" ></RowDefinition>
+        <RowDefinition Height="35"></RowDefinition>
+        <RowDefinition Height="50"></RowDefinition>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+        <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="4">
+        <MenuItem Header="Действие" >
+            <MenuItem Header="Отменить" Command="Undo" ></MenuItem>
+            <Separator></Separator>
+            <MenuItem Header="Создать" Command="New"></MenuItem>
+            <MenuItem Header="Редактировать" Command="{x:Static commands:DataCommands.Edit}"> </MenuItem>
+            <MenuItem Header="Сохранить" Command="Save"></MenuItem>
+            <MenuItem Header="Найти" Command="Find"/>
+            <MenuItem Header="Обновить" Command="Refresh"/>
+            <Separator></Separator>
+            <MenuItem Header="Удалить" Command="{x:Static commands:DataCommands.Delete}" />
+            <MenuItem Header="Отчет"/>
+        </MenuItem>
+        </Menu>
+        <ToolBar Name="ToolBar1" Grid.Row="1" Grid.ColumnSpan="4">
+            <Button Name="Undo" ToolTip="Отмена действия" Command="Undo">
+                <Image Source="Images/Undo.png"></Image>
+            </Button>
+            <Button Name="Add" ToolTip="Добавить товар" Command="New">
+                <Image Source="Images/Add.png"></Image>
+            </Button>
+            <Button Name="Edit" ToolTip="Изменить описание товара" Command="{x:Static commands:DataCommands.Edit}">
+                <Image Source="Images/Edit.png"></Image>
+            </Button>
+            <Button Name="Find" ToolTip="Найти товар" Command="Find">
+                <Image Source="Images/Search.png"></Image>
+            </Button>
+            <Button Name="Save" ToolTip="Сохранить изменения" Command="Save">
+                <Image Source="Images/Save.png"></Image>
+            </Button>
+            <Button Name="Refresh" Command="Refresh" ToolTip="Обновить данные по сотрудникам">
+                <Image Source="Images/Refresh.png" ></Image>
+            </Button>
+        </ToolBar>
+        <Border Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="5" x:Name="BorderFind" Visibility="Visible">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.03*"/>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="0.03*"/>
+                    <RowDefinition Height="0.05*"/>
+
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">Название</TextBlock>
+                <TextBox Text="" Grid.Row="1" x:Name="NameSearchField" TextChanged="NameSearchField_TextChanged"  Height="25"></TextBox>
+                <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">Тип товара</TextBlock>
+                <ComboBox Grid.Row="3" x:Name="TypeSearchComboBox" DisplayMemberPath="Название" SelectionChanged="TypeSearchComboBox_SelectionChanged" Height="25" Text="Выберите тип товара"></ComboBox>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="5">
+        </Grid>
+        <DataGrid Name="GoodsData" Grid.Row="2" Grid.Column="0" Grid.RowSpan="10" Grid.ColumnSpan="2" 
+                  AutoGenerateColumns="False" RowBackground="#FFE6D3EF" AlternatingRowBackground="#FC96CFD4" 
+                  BorderBrush="#FF1F33EB" BorderThickness="3" Cursor="Hand" IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Наименование, Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridComboBoxColumn x:Name="TypesOfGoodsComboBox" Header="Вид товара" DisplayMemberPath="Название" 
+                SelectedValueBinding="{Binding Вид_товара, Mode=TwoWay}" SelectedValuePath="ID"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Цена, Mode=Twoway}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Количество_на_складе, Mode=Twoway}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static commands:DataCommands.Edit}" Executed="Edit_Executed" CanExecute="Edit_CanExecute"/>
+        <CommandBinding Command="Save" CanExecute="Save_CanExecute" Executed="Save_Executed"/>
+        <CommandBinding Command="Undo" CanExecute="Undo_CanExecute" Executed="Undo_Executed"/>
+        <CommandBinding Command="New" CanExecute="New_CanExecute" Executed="New_Executed"/>
+        <CommandBinding Command="Find" CanExecute="Find_CanExecute" Executed="Find_Executed"/>
+        <CommandBinding Command="Refresh" CanExecute="Refresh_CanExecute" Executed="Refresh_Executed"/>
+    </Window.CommandBindings>
+</Window>
